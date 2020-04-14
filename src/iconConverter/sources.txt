@@ -1,0 +1,5 @@
+The network settings icon (used for every compiled AutoHotkey_L script in this project, with a generic "This-is-a-network-related-application" intent), was obtained from the following URL, under the GNU General Lesser Public License:
+http://www.softicons.com/free-icons/system-icons/crystal-project-icons-by-everaldo-coelho/apps-network-settings-icon
+
+The script in this directory which converts .png files to icons (which I used for the network settings icon) was obtained from the following URL; license unknown, assumed to be free for any use, as it is publicly posted in a forum where people post scripts with the intent of both offering them as tools for others and obtaining help in developing them:
+http://www.autohotkey.com/board/topic/82416-ico-createrconverter-png-to-ico/

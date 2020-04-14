@@ -1,0 +1,10 @@
+Windows Registry Editor Version 5.00
+
+;RECOMMENDED OPTION:
+;Always attach the (good-for-nothing dang) Werfault debugger--which uselessly nags about crashed programs and dumps info about them, wasting time, and in our case, drawing attention to what doesn't need drawing attention to--always attach Werfault.exe to a NUL exe (nothingness). It will therefore terminate without doing anything.
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\Werfault.exe]
+"Debugger"="NUL"
+
+;ANOTHER OPTION: Hide Administrator from logon screen (even if the Administrator account is active)
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\UserList]
+;"Administrator"=dword:00000000

@@ -1,0 +1,15 @@
+LaunchServ
+SystemSpawn
+spawn
+farmComm
+runProcesses
+AutoHotKey
+paexec
+minerd
+cudaminer
+bfgminer
+cgminer
+phoenix
+Werfault
+deleteThisPrefixIfTheCommandLineHangs-cmd
+deleteThisPrefixIfTheCommandLineHangs-conhost

@@ -1,0 +1,8 @@
+minerd
+cudaminer
+bfgminer
+cgminer
+minerd
+phoenix
+DeleteThisPrefixIfYouWantToTerminate-cmd
+DeleteThisPrefixIfYouWantToTerminate-conhost

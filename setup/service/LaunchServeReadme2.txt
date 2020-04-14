@@ -1,0 +1,1 @@
+Apparently, the LaunchServe.exe service creation/management tool will only install if you name your config file LaunchServ.ini. Meaning, LaunchServe.exe strictly looks for that .ini file name, and will not use any other to install a service. Therefore, configure the service you wish to create in LaunchServ.ini.

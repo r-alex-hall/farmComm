@@ -1,0 +1,1 @@
+REM path-to\another-exe.exe --this-other-switch --that-other-switch
