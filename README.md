@@ -14,16 +14,7 @@ Please see the LICENSE file for license details and a DISCLAIMER (hint: you are 
 
 File an issue report for development/bug inquiries.
 
-If you get good use out of this, please consider sending any amount to any of my cryptocurrency donation addresses:
-
-Bitcoin:		1CoRdDm9KyDTfhnaTNoeM5HiNtRHBaKoy9
-Litecoin:		LNpsi5T9UuSP9Su4yahhgT5CfY5vCExhmP
-Feathercoin:	6ekB56KQJfgFZGM2qWvVRt77EHLGr5C3EN
-Novacoin:		4Z123Y8QZXPVvfA7LVDySunJoEG2dnUHFV
-
 ## INSTALLATION AND USE
-
-To upgrade from a previous version, delete all the files in the root of your distribution (except perhaps mineall.bat and delayed-killmine.bat, if you have customized those), then copy all the root files from this distribution into that root folder. Also delete the \setup folder form the install, and copy the new \setup folder from this distribution.
 
 Create these folders in Windows:
 
@@ -110,45 +101,6 @@ Possibly optionally run a resource monitor in session zero to (optionally) behol
 
 (What if anything else?)
 
-## RELEASE HISTORY
-
-In reverse chronological order. This numbering adheres to a scheme that may be arbitrarily incoherent, as it was before I learned about `major.minor.patch` version scheme.
-
-#### v0.9.0.4
-
-Default install now runs as a service, and accesses graphics hardware whether users are logged in or not! The service is actually LaunchServ, which launches systemSpawn.exe (a compiled AutoHotkey script), which checks whether `farmComm.exe` is running, which if it isn't, `systemSpawn.exe` uses `PaExec.exe` to launch `farmComm.exe` in Session 0, interacting with the Secure Desktop!
-
-Added LaunchServe service install/uninstall folder to subfolder of \setup.
-
-Added LaunchServ (the launcher service) to `allProcessesList.txt`, used by `terminateAll.bat`.
-
-Added the following line to `terminateAll.bat`, to try to stop LaunchServ nicely before brutal termination attempts:
-`pathToLaunchServe\LaunchServ.exe -stop`
-
-Updated `INSTALLER.bat` to uninstall any previous versions, then install with the above described configuration (to use LaunchServ).
-
-Made all batches much more visually prominent about what they're doing.
-
-Updated `farmComm.ahk` to call the killSpawns() function immediately at program start, so that any running spawned processes are terminated in any situation where the user switches, but an instance of farmComm.exe (in the session switched from) did not observe any user activity, and therefore did not properly kill those processes itself.
-
-#### v0.9.0.2
-
-Done: "LONG-TERM OBJECTIVE, BETTER SOLUTION," re the below previous item in the TO DO list. Functionality of multiple executables rolled into one executable, `farmComm.exe` (exploiting AutoHotkey timer functionality, which I figured out better--see `src\test\timerTest.ahk`.) Left one process as its own executable though; `runProcesses.exe`: handy for manually running processes whenever you wish and/or as called via `farmComm.exe`.
-
-Unfortunately for anyone using this without admin privileges, the "USER" install described is at least temporarily suspended, because that uses a whole other branch of logic not-so-easy to either integrate into `farmComm.exe` or into a variant for that purpose. Double-unfortunately, the previous release intended for that purpose had a critical bug: if you want this function, you must either beg me or adapt the code yourself.
-
-REFERENCE: URGENT BUGFIX: Instead of having `spawn.exe` (or) `systemSpawn.exe` launch both spawnCheck and killCheck, have spawnCheck periodically check for the existence of the killCheck process, suspend its own functionality if that process is not found, attempt to launch the process any time it is not found, and resume its own functionality when that process if found. (LONG-TERM OBJECTIVE, BETTER SOLUTION; wrap all this functionality into one program, so that multiple executables do not need to be managed (wherever possible). With my first try at that, I couldn't seem to get simultaneous timers (and dependent functions) running properly in different threads). Otherwise, if spawnCheck.exe runs alone, it can spawn processes while the user is active, which it *should not.*
-
-####v0.9.0.1 bug fix
-
-`Spawn.exe` was still coded to kill processes via `killSpawns.exe`, notwithstanding killSpawns.exe no longer exists, as its functionality was rolled into `killCheck.exe`. Updated `spawn.exe` to fix.
-
-#### v0.9.7 INITIAL RELEASE
-
-2013-07-31 TOO FREAKING EARLY IN THE MORNING
-
-First general release.
-
 ## DEVELOPER NOTES
 
 ### COMPILATION
@@ -172,3 +124,5 @@ At this writing, a limitation of the `localComm\COMM1-3.txt` files is that they 
 ### OTHER NOTES
 
 I have no idea why this is so, but depending on the version of PaExec used, certain commands these executables rely on must be executed differently in order to work as hoped. PaExec 1.1 will only interact with the Secure Deskstop (session 0) if you explicitly tell it to, using the argument -d 0. However, PaExec v1.1, it seems will *not* honor that parameter (is this a bug??), yet, if you omit the -d 0 parameter, it properly interacts with the Secure Desktop (by default, I guess)! At this writing, this project relies on and uses PaExec v1.2, without using the -d 0 parameter in said setting.
+
+Cloned git histories of this which you may find out there on the web reveal a use of this for cyrtpocurrency mining which I now regard as foolish. _I have rewritten git history in this (via shallow clone) to scrub that foolish nonense out._ Maybe there's a way to use just CPU or even light GPU power for good. I'm not convinced yet that any cryptocurrency is that. Please convince me otherwise if you know of one.
